@@ -23,11 +23,12 @@ FONT_BOLD_PATH = f"{FONT_DIR}/NotoSans-Bold.ttf"
 
 if not os.path.exists(FONT_PATH):
     urllib.request.urlretrieve(
-        "https://github.com/google/fonts/raw/main/ofl/notosans/NotoSans-Regular.ttf",
+        "https://fonts.gstatic.com/s/notosans/v36/o-0bIpQlx3QUlC5A4PNjXhFVZNyB1W4.ttf",
         FONT_PATH)
+
 if not os.path.exists(FONT_BOLD_PATH):
     urllib.request.urlretrieve(
-        "https://github.com/google/fonts/raw/main/ofl/notosans/NotoSans-Bold.ttf",
+        "https://fonts.gstatic.com/s/notosans/v36/o-0IIpQlx3QUlC5A4PNr4ARJN3He.ttf",
         FONT_BOLD_PATH)
 
 def get_font(size, bold=False):
@@ -60,77 +61,75 @@ def hex_rgb(h, alpha=None):
 
 # ── ÇEVİRİ ───────────────────────────────────────────────
 TRANSLATIONS = {
-    "Non-Farm Payrolls": "Tarım Dışı İstihdam",
-    "Unemployment Rate": "İşsizlik Oranı",
-    "CPI m/m": "Tüketici Fiyat Endeksi (Aylık)",
-    "CPI y/y": "Tüketici Fiyat Endeksi (Yıllık)",
-    "Core CPI m/m": "Çekirdek TÜFE (Aylık)",
-    "Core CPI y/y": "Çekirdek TÜFE (Yıllık)",
-    "PPI m/m": "Üretici Fiyat Endeksi (Aylık)",
-    "PPI y/y": "Üretici Fiyat Endeksi (Yıllık)",
-    "GDP q/q": "GSYİH (Çeyreklik)",
-    "GDP m/m": "GSYİH (Aylık)",
-    "Retail Sales m/m": "Perakende Satışlar (Aylık)",
-    "Core Retail Sales m/m": "Çekirdek Perakende Satışlar",
-    "FOMC Statement": "FED Para Politikası Açıklaması",
-    "Fed Interest Rate Decision": "FED Faiz Kararı",
-    "ECB Interest Rate Decision": "ECB Faiz Kararı",
-    "ECB Monetary Policy Statement": "ECB Para Politikası Açıklaması",
-    "BOE Interest Rate Decision": "BOE Faiz Kararı",
-    "ISM Manufacturing PMI": "ISM İmalat PMI",
+    "Non-Farm Payrolls": "Tarim Disi Istihdam",
+    "Unemployment Rate": "Issizlik Orani",
+    "CPI m/m": "TUFE (Aylik)",
+    "CPI y/y": "TUFE (Yillik)",
+    "Core CPI m/m": "Cekirdek TUFE (Aylik)",
+    "Core CPI y/y": "Cekirdek TUFE (Yillik)",
+    "PPI m/m": "Uretici Fiyat Endeksi (Aylik)",
+    "PPI y/y": "Uretici Fiyat Endeksi (Yillik)",
+    "GDP q/q": "GSYIH (Ceyreklik)",
+    "GDP m/m": "GSYIH (Aylik)",
+    "Retail Sales m/m": "Perakende Satislar (Aylik)",
+    "Core Retail Sales m/m": "Cekirdek Perakende Satislar",
+    "FOMC Statement": "FED Para Politikasi Aciklamasi",
+    "Fed Interest Rate Decision": "FED Faiz Karari",
+    "ECB Interest Rate Decision": "ECB Faiz Karari",
+    "ECB Monetary Policy Statement": "ECB Para Politikasi Aciklamasi",
+    "BOE Interest Rate Decision": "BOE Faiz Karari",
+    "ISM Manufacturing PMI": "ISM Imalat PMI",
     "ISM Services PMI": "ISM Hizmet PMI",
-    "Manufacturing PMI": "İmalat PMI",
+    "Manufacturing PMI": "Imalat PMI",
     "Services PMI": "Hizmet PMI",
-    "Flash Manufacturing PMI": "İmalat PMI (Öncü)",
-    "Flash Services PMI": "Hizmet PMI (Öncü)",
-    "ADP Non-Farm Employment Change": "ADP Özel Sektör İstihdamı",
-    "Initial Jobless Claims": "Haftalık İşsizlik Başvuruları",
-    "Trade Balance": "Dış Ticaret Dengesi",
+    "Flash Manufacturing PMI": "Imalat PMI (Oncu)",
+    "Flash Services PMI": "Hizmet PMI (Oncu)",
+    "ADP Non-Farm Employment Change": "ADP Ozel Sektor Istihdami",
+    "Initial Jobless Claims": "Haftalik Issizlik Basvurulari",
+    "Trade Balance": "Dis Ticaret Dengesi",
     "Current Account": "Cari Hesap",
-    "Consumer Confidence": "Tüketici Güveni",
-    "CB Consumer Confidence": "Conference Board Tüketici Güveni",
-    "Michigan Consumer Sentiment": "Michigan Tüketici Güveni",
-    "JOLTS Job Openings": "İş İlanları (JOLTS)",
-    "Durable Goods Orders m/m": "Dayanıklı Tüketim Siparişleri",
-    "Building Permits": "İnşaat İzinleri",
-    "Housing Starts": "Konut Başlangıçları",
-    "Existing Home Sales": "Mevcut Konut Satışları",
-    "New Home Sales": "Yeni Konut Satışları",
-    "Industrial Production m/m": "Sanayi Üretimi (Aylık)",
-    "Capacity Utilization Rate": "Kapasite Kullanım Oranı",
-    "Core PCE Price Index m/m": "Çekirdek PCE Fiyat Endeksi",
+    "Consumer Confidence": "Tuketici Guveni",
+    "CB Consumer Confidence": "Conference Board Tuketici Guveni",
+    "Michigan Consumer Sentiment": "Michigan Tuketici Guveni",
+    "JOLTS Job Openings": "Is Ilanlari (JOLTS)",
+    "Durable Goods Orders m/m": "Dayanikli Tuketim Siparisleri",
+    "Building Permits": "Insaat Izinleri",
+    "Housing Starts": "Konut Baslangiclar",
+    "Existing Home Sales": "Mevcut Konut Satislari",
+    "New Home Sales": "Yeni Konut Satislari",
+    "Industrial Production m/m": "Sanayi Uretimi (Aylik)",
+    "Capacity Utilization Rate": "Kapasite Kullanim Orani",
+    "Core PCE Price Index m/m": "Cekirdek PCE Fiyat Endeksi",
     "PCE Price Index m/m": "PCE Fiyat Endeksi",
-    "Crude Oil Inventories": "Ham Petrol Stokları",
-    "Natural Gas Storage": "Doğal Gaz Stokları",
-    "FOMC Meeting Minutes": "FED Toplantı Tutanakları",
-    "Fed Chair Powell Speaks": "FED Başkanı Powell Konuşması",
-    "Fed Chair Speaks": "FED Başkanı Konuşması",
-    "ECB President Lagarde Speaks": "ECB Başkanı Lagarde Konuşması",
-    "BOE Gov Bailey Speaks": "BOE Başkanı Bailey Konuşması",
-    "German CPI m/m": "Almanya TÜFE (Aylık)",
-    "German GDP q/q": "Almanya GSYİH",
-    "German Ifo Business Climate": "Almanya İş İklimi",
+    "Crude Oil Inventories": "Ham Petrol Stoklari",
+    "Natural Gas Storage": "Dogal Gaz Stoklari",
+    "FOMC Meeting Minutes": "FED Toplanti Tutanaklari",
+    "Fed Chair Powell Speaks": "FED Baskani Powell Konusmasi",
+    "Fed Chair Speaks": "FED Baskani Konusmasi",
+    "ECB President Lagarde Speaks": "ECB Baskani Lagarde Konusmasi",
+    "BOE Gov Bailey Speaks": "BOE Baskani Bailey Konusmasi",
+    "German CPI m/m": "Almanya TUFE (Aylik)",
+    "German GDP q/q": "Almanya GSYIH",
+    "German Ifo Business Climate": "Almanya Is Iklimi",
     "ZEW Economic Sentiment": "ZEW Ekonomik Beklenti",
-    "Chinese Manufacturing PMI": "Çin İmalat PMI",
-    "Caixin Manufacturing PMI": "Caixin İmalat PMI",
-    "BOJ Interest Rate Decision": "BOJ Faiz Kararı",
-    "Flash GDP q/q": "GSYİH (Öncü)",
-    "Prelim GDP q/q": "GSYİH (Ön Veri)",
-    "Average Earnings Index": "Ortalama Kazanç Endeksi",
-    "Claimant Count Change": "İşsizlik Başvuruları Değişimi",
-    "Personal Income m/m": "Kişisel Gelir (Aylık)",
-    "Personal Spending m/m": "Kişisel Harcama (Aylık)",
-    "Empire State Manufacturing Index": "Empire State İmalat",
-    "Philadelphia Fed Manufacturing Index": "Philadelphia Fed İmalat",
+    "Chinese Manufacturing PMI": "Cin Imalat PMI",
+    "Caixin Manufacturing PMI": "Caixin Imalat PMI",
+    "BOJ Interest Rate Decision": "BOJ Faiz Karari",
+    "Flash GDP q/q": "GSYIH (Oncu)",
+    "Prelim GDP q/q": "GSYIH (On Veri)",
+    "Average Earnings Index": "Ortalama Kazanc Endeksi",
+    "Claimant Count Change": "Issizlik Basvurulari Degisimi",
+    "Empire State Manufacturing Index": "Empire State Imalat",
+    "Philadelphia Fed Manufacturing Index": "Philadelphia Fed Imalat",
     "Chicago PMI": "Chicago PMI",
-    "ISM Non-Manufacturing PMI": "ISM Hizmet Sektörü PMI",
+    "ISM Non-Manufacturing PMI": "ISM Hizmet Sektoru PMI",
     "Inflation Report": "Enflasyon Raporu",
 }
 
 COUNTRY_FLAGS = {
-    "USD":"🇺🇸","EUR":"🇪🇺","GBP":"🇬🇧",
-    "JPY":"🇯🇵","CNY":"🇨🇳","AUD":"🇦🇺",
-    "CAD":"🇨🇦","CHF":"🇨🇭","NZD":"🇳🇿","TRY":"🇹🇷",
+    "USD":"US","EUR":"EU","GBP":"GB",
+    "JPY":"JP","CNY":"CN","AUD":"AU",
+    "CAD":"CA","CHF":"CH","NZD":"NZ","TRY":"TR",
 }
 
 SYMBOL_MAP = {
@@ -150,9 +149,17 @@ def translate(title):
             return tr
     return title
 
+def flag_text(country):
+    flags = {
+        "USD":"[ABD]","EUR":"[AB]","GBP":"[GBR]",
+        "JPY":"[JPN]","CNY":"[CHN]","AUD":"[AUS]",
+        "CAD":"[CAN]","CHF":"[ISV]","NZD":"[YZL]","TRY":"[TUR]",
+    }
+    return flags.get(country, "")
+
 # ── TAKVİM GÖRSELİ ──────────────────────────────────────
 def create_calendar_image(events, date_str):
-    S = 2  # scale — yüksek kalite
+    S = 2
     W = 1080 * S
     PAD = 56 * S
     HEADER_H = 150 * S
@@ -162,47 +169,45 @@ def create_calendar_image(events, date_str):
     n = max(len(events), 1)
     H = HEADER_H + 24*S + (CARD_H + GAP) * n + 70*S + FOOTER_H
 
-    img = Image.new("RGBA", (W, H), hex_rgb(C_BG))
+    img = Image.new("RGB", (W, H), hex_rgb(C_BG))
     d = ImageDraw.Draw(img)
 
-    # Header
     d.rectangle([0, 0, W, HEADER_H], fill=hex_rgb(C_HEADER))
-    d.text((PAD, 30*S), "PRISM FX  ·  OTOMATİK TAKVİM", font=get_font(18*S), fill=hex_rgb(C_GOLD))
-    d.text((PAD, 62*S), "Günün Ekonomik Takvimi", font=get_font(34*S, True), fill=hex_rgb(C_WHITE))
-    d.text((PAD, 112*S), date_str, font=get_font(20*S), fill=(*hex_rgb(C_WHITE), 100))
-    d.rectangle([PAD, HEADER_H+10*S, W-PAD, HEADER_H+11*S], fill=(*hex_rgb(C_GOLD), 50))
+    d.text((PAD, 30*S), "PRISM FX  -  OTOMATIK TAKVIM", font=get_font(18*S), fill=hex_rgb(C_GOLD))
+    d.text((PAD, 62*S), "Gunun Ekonomik Takvimi", font=get_font(34*S, True), fill=hex_rgb(C_WHITE))
+    d.text((PAD, 112*S), date_str, font=get_font(20*S), fill=hex_rgb(C_MUTED))
+    d.rectangle([PAD, HEADER_H+10*S, W-PAD, HEADER_H+12*S], fill=hex_rgb(C_GOLD))
 
     y = HEADER_H + 26*S
     if not events:
-        d.text((PAD, y+30*S), "Bugün yüksek önemli veri bulunmamaktadır.", font=get_font(24*S), fill=hex_rgb(C_MUTED))
+        d.text((PAD, y+30*S), "Bugun yuksek onemli veri bulunmamaktadir.", font=get_font(24*S), fill=hex_rgb(C_MUTED))
     else:
         for e in events:
             d.rounded_rectangle([PAD, y, W-PAD, y+CARD_H], radius=14*S, fill=hex_rgb(C_CARD), outline=hex_rgb(C_BORDER), width=2)
             d.rounded_rectangle([PAD, y, PAD+6*S, y+CARD_H], radius=4*S, fill=hex_rgb(C_RED))
             d.text((PAD+18*S, y+16*S), e.get("time_local",""), font=get_font(24*S, True), fill=hex_rgb(C_RED))
-            flag = COUNTRY_FLAGS.get(e.get("country",""), "")
+            flag = flag_text(e.get("country",""))
             title = translate(e.get("title",""))
-            d.text((PAD+120*S, y+16*S), f"{flag}  {title}", font=get_font(24*S, True), fill=hex_rgb(C_WHITE))
+            d.text((PAD+120*S, y+16*S), f"{flag} {title}", font=get_font(24*S, True), fill=hex_rgb(C_WHITE))
             parts = []
             if e.get("forecast"): parts.append(f"Beklenti: {e['forecast']}")
-            if e.get("previous"): parts.append(f"Önceki: {e['previous']}")
-            sub = "  ·  ".join(parts) if parts else "Veri bekleniyor"
+            if e.get("previous"): parts.append(f"Onceki: {e['previous']}")
+            sub = "  |  ".join(parts) if parts else "Veri bekleniyor"
             d.text((PAD+120*S, y+58*S), sub, font=get_font(18*S), fill=hex_rgb(C_MUTED))
             y += CARD_H + GAP
 
-    d.rectangle([PAD, y+12*S, W-PAD, y+13*S], fill=(*hex_rgb(C_WHITE), 12))
-    d.text((PAD, y+24*S), "Yüksek Önemli  ·  Yatırım tavsiyesi değildir.", font=get_font(18*S), fill=hex_rgb(C_MUTED))
+    d.rectangle([PAD, y+12*S, W-PAD, y+14*S], fill=hex_rgb(C_BORDER))
+    d.text((PAD, y+24*S), "Yuksek Onemli  |  Yatirim tavsiyesi degildir.", font=get_font(18*S), fill=hex_rgb(C_MUTED))
 
     fy = H - FOOTER_H
     d.rectangle([0, fy, W, H], fill=hex_rgb(C_HEADER))
     d.text((PAD, fy+24*S), "PRISM FX", font=get_font(30*S, True), fill=hex_rgb(C_WHITE))
-    d.text((PAD, fy+66*S), "Telegram  ·  Discord  ·  prismfxpro.com", font=get_font(18*S), fill=(*hex_rgb(C_WHITE), 80))
+    d.text((PAD, fy+66*S), "Telegram  |  Discord  |  prismfxpro.com", font=get_font(18*S), fill=hex_rgb(C_MUTED))
     handle = "@prismfxpro"
-    bbox = d.textbbox((0,0), handle, font=get_font(22*S))
-    d.text((W-PAD-(bbox[2]-bbox[0]), fy+44*S), handle, font=get_font(22*S), fill=(*hex_rgb(C_GOLD), 180))
+    hb = d.textbbox((0,0), handle, font=get_font(22*S))
+    d.text((W-PAD-(hb[2]-hb[0]), fy+44*S), handle, font=get_font(22*S), fill=hex_rgb(C_GOLD))
 
-    # 2x → 1x
-    out = img.resize((W//S, H//S), Image.LANCZOS).convert("RGB")
+    out = img.resize((W//S, H//S), Image.LANCZOS)
     buf = BytesIO(); out.save(buf, "PNG", quality=95); buf.seek(0)
     return buf
 
@@ -210,14 +215,13 @@ def create_calendar_image(events, date_str):
 def create_signal_image(symbol, direction, entry, tp, sl, is_vip=False):
     S = 2
     W, H = 1080*S, 560*S
-    img = Image.new("RGBA", (W, H), hex_rgb(C_BG))
+    img = Image.new("RGB", (W, H), hex_rgb(C_BG))
     d = ImageDraw.Draw(img)
     PAD = 56*S
 
-    # Header
     d.rectangle([0, 0, W, 120*S], fill=hex_rgb(C_HEADER))
     label = "VIP SINYAL" if is_vip else "SINYAL"
-    d.text((PAD, 28*S), f"PRISM FX  ·  {label}", font=get_font(18*S), fill=hex_rgb(C_GOLD))
+    d.text((PAD, 28*S), f"PRISM FX  -  {label}", font=get_font(18*S), fill=hex_rgb(C_GOLD))
     full_symbol = SYMBOL_MAP.get(symbol.upper(), symbol.upper())
     d.text((PAD, 58*S), full_symbol, font=get_font(40*S, True), fill=hex_rgb(C_WHITE))
 
@@ -226,15 +230,13 @@ def create_signal_image(symbol, direction, entry, tp, sl, is_vip=False):
     dir_text  = "LONG" if is_long else "SHORT"
     bw, bh = 160*S, 56*S
     bx, by = W-PAD-bw, 34*S
-    d.rounded_rectangle([bx, by, bx+bw, by+bh], radius=10*S,
-        fill=(*hex_rgb(dir_color), 30), outline=hex_rgb(dir_color), width=3)
+    d.rounded_rectangle([bx, by, bx+bw, by+bh], radius=10*S, fill=hex_rgb(C_CARD), outline=hex_rgb(dir_color), width=3)
     bbox = d.textbbox((0,0), dir_text, font=get_font(28*S, True))
     tw, th = bbox[2]-bbox[0], bbox[3]-bbox[1]
     d.text((bx+(bw-tw)//2, by+(bh-th)//2), dir_text, font=get_font(28*S, True), fill=hex_rgb(dir_color))
 
-    d.rectangle([PAD, 128*S, W-PAD, 129*S], fill=(*hex_rgb(C_GOLD), 50))
+    d.rectangle([PAD, 128*S, W-PAD, 130*S], fill=hex_rgb(C_GOLD))
 
-    # 3 kart
     cw = (W - 2*PAD - 2*24*S) // 3
     ch = 120*S
     cy = 148*S
@@ -245,26 +247,21 @@ def create_signal_image(symbol, direction, entry, tp, sl, is_vip=False):
     ]
     for i, (lbl, val, clr) in enumerate(cards):
         cx = PAD + i*(cw+24*S)
-        fill_a = 20 if clr != C_WHITE else 255
-        out_a  = 80 if clr != C_WHITE else 255
-        d.rounded_rectangle([cx, cy, cx+cw, cy+ch], radius=14*S,
-            fill=(*hex_rgb(clr), fill_a) if clr != C_WHITE else hex_rgb(C_CARD),
-            outline=(*hex_rgb(clr), out_a), width=2)
+        d.rounded_rectangle([cx, cy, cx+cw, cy+ch], radius=14*S, fill=hex_rgb(C_CARD), outline=hex_rgb(clr), width=2)
         lb = d.textbbox((0,0), lbl, font=get_font(18*S))
-        d.text((cx+(cw-(lb[2]-lb[0]))//2, cy+18*S), lbl, font=get_font(18*S), fill=(*hex_rgb(clr), 160))
+        d.text((cx+(cw-(lb[2]-lb[0]))//2, cy+18*S), lbl, font=get_font(18*S), fill=hex_rgb(C_MUTED))
         vb = d.textbbox((0,0), val, font=get_font(38*S, True))
-        d.text((cx+(cw-(vb[2]-vb[0]))//2, cy+50*S), val, font=get_font(38*S, True), fill=hex_rgb(clr))
+        d.text((cx+(cw-(vb[2]-vb[0]))//2, cy+52*S), val, font=get_font(38*S, True), fill=hex_rgb(clr))
 
-    # R:R
     try:
         ef = float(str(entry).replace(",","."))
         tf = float(str(tp).replace(",","."))
         sf = float(str(sl).replace(",","."))
         reward = abs(tf-ef); risk = abs(ef-sf)
         rr = round(reward/risk, 2) if risk > 0 else 0
-        rr_text = f"Risk / Ödül:  1 : {rr}   |   Risk: -{round(risk,1)}   |   Hedef: +{round(reward,1)}"
+        rr_text = f"Risk / Odul:  1 : {rr}   |   Risk: -{round(risk,1)}   |   Hedef: +{round(reward,1)}"
     except:
-        rr_text = "R:R hesaplanamadı"
+        rr_text = "R:R hesaplanamadi"
 
     ry = cy+ch+20*S
     d.rounded_rectangle([PAD, ry, W-PAD, ry+60*S], radius=10*S, fill=hex_rgb(C_CARD), outline=hex_rgb(C_BORDER), width=2)
@@ -272,18 +269,18 @@ def create_signal_image(symbol, direction, entry, tp, sl, is_vip=False):
     d.text((PAD+(W-2*PAD-(rb[2]-rb[0]))//2, ry+18*S), rr_text, font=get_font(20*S), fill=hex_rgb(C_GOLD))
 
     dy = ry+70*S
-    d.rectangle([PAD, dy, W-PAD, dy+2], fill=(*hex_rgb(C_WHITE), 12))
-    d.text((PAD, dy+14*S), "Yatirım tavsiyesi degildir. Kendi risk yonetiminizi uygulayiniz.", font=get_font(17*S), fill=hex_rgb(C_MUTED))
+    d.rectangle([PAD, dy, W-PAD, dy+2], fill=hex_rgb(C_BORDER))
+    d.text((PAD, dy+14*S), "Yatirim tavsiyesi degildir. Kendi risk yonetiminizi uygulayiniz.", font=get_font(17*S), fill=hex_rgb(C_MUTED))
 
     fy = H-110*S
     d.rectangle([0, fy, W, H], fill=hex_rgb(C_HEADER))
     d.text((PAD, fy+22*S), "PRISM FX", font=get_font(30*S, True), fill=hex_rgb(C_WHITE))
-    d.text((PAD, fy+64*S), "Telegram  ·  Discord  ·  prismfxpro.com", font=get_font(18*S), fill=(*hex_rgb(C_WHITE), 80))
+    d.text((PAD, fy+64*S), "Telegram  |  Discord  |  prismfxpro.com", font=get_font(18*S), fill=hex_rgb(C_MUTED))
     handle = "@prismfxpro"
     hb = d.textbbox((0,0), handle, font=get_font(22*S))
-    d.text((W-PAD-(hb[2]-hb[0]), fy+42*S), handle, font=get_font(22*S), fill=(*hex_rgb(C_GOLD), 180))
+    d.text((W-PAD-(hb[2]-hb[0]), fy+42*S), handle, font=get_font(22*S), fill=hex_rgb(C_GOLD))
 
-    out = img.resize((W//S, H//S), Image.LANCZOS).convert("RGB")
+    out = img.resize((W//S, H//S), Image.LANCZOS)
     buf = BytesIO(); out.save(buf, "PNG", quality=95); buf.seek(0)
     return buf
 
@@ -323,25 +320,24 @@ async def get_events():
                             })
                     return events
     except Exception as e:
-        logger.error(f"FF hatası: {e}")
+        logger.error(f"FF hatasi: {e}")
     return []
 
 # ── SABAH TAKVİM ─────────────────────────────────────────
 async def send_morning_summary(bot):
     events = await get_events()
     now = datetime.now(TIMEZONE)
-    date_str = now.strftime("%d %B %Y  ·  %A  ·  08:00")
+    date_str = now.strftime("%d %B %Y  -  %A  -  08:00")
     img = create_calendar_image(events, date_str)
-    caption = "📅 *GÜNÜN EKONOMİK TAKVİMİ*\n"
+    caption = "📅 *GUNUN EKONOMIK TAKVIMI*\n"
     if not events:
-        caption += "\nBugün yüksek önemli veri bulunmamaktadır."
+        caption += "\nBugun yuksek onemli veri bulunmamaktadir."
     else:
         for e in events:
-            flag = COUNTRY_FLAGS.get(e["country"],"")
-            caption += f"\n🔴 `{e['time_local']}` {flag} *{translate(e['title'])}*"
-    caption += "\n\n⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro"
+            caption += f"\n🔴 `{e['time_local']}` *{translate(e['title'])}*"
+    caption += "\n\n⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro"
     await bot.send_photo(chat_id=COMMUNITY, photo=img, caption=caption, parse_mode="Markdown")
-    logger.info("Sabah takvimi gönderildi.")
+    logger.info("Sabah takvimi gonderildi.")
 
 # ── 15 DK UYARISI ────────────────────────────────────────
 async def check_upcoming(bot):
@@ -352,16 +348,15 @@ async def check_upcoming(bot):
         if not dt: continue
         diff = (dt - now).total_seconds() / 60
         if 14 <= diff <= 16:
-            flag = COUNTRY_FLAGS.get(e["country"],"")
             tr = translate(e["title"])
             fc = f"\n📈 Beklenti: *{e['forecast']}*" if e.get("forecast") else ""
-            pv = f"\n📊 Önceki: {e['previous']}" if e.get("previous") else ""
-            msg = (f"⚠️ *15 DAKİKA SONRA VERİ AÇIKLANACAK!*\n\n"
-                   f"🔴 {flag} *{tr}*\n🕐 Saat: `{e['time_local']}`{fc}{pv}\n\n"
-                   f"_Piyasalarda volatilite artabilir. Risk yönetimine dikkat!_\n\n"
-                   f"⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro")
+            pv = f"\n📊 Onceki: {e['previous']}" if e.get("previous") else ""
+            msg = (f"⚠️ *15 DAKIKA SONRA VERI ACIKLANACAK!*\n\n"
+                   f"🔴 *{tr}*\n🕐 Saat: `{e['time_local']}`{fc}{pv}\n\n"
+                   f"_Piyasalarda volatilite artabilir. Risk yonetimine dikkat!_\n\n"
+                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
             await bot.send_message(chat_id=COMMUNITY, text=msg, parse_mode="Markdown")
-            logger.info(f"15dk uyarı: {tr}")
+            logger.info(f"15dk uyari: {tr}")
 
 # ── VERİ SONUCU ──────────────────────────────────────────
 async def check_results(bot):
@@ -372,7 +367,6 @@ async def check_results(bot):
         if not dt: continue
         diff = (now - dt).total_seconds() / 60
         if 2 <= diff <= 4 and e.get("actual"):
-            flag = COUNTRY_FLAGS.get(e["country"],"")
             tr = translate(e["title"])
             actual = e["actual"]
             forecast = e.get("forecast","?")
@@ -381,18 +375,18 @@ async def check_results(bot):
                 a = float(actual.replace("K","000").replace("M","000000").replace("%","").replace(",","."))
                 f = float(forecast.replace("K","000").replace("M","000000").replace("%","").replace(",","."))
                 emoji = "🟢" if a > f else "🔴" if a < f else "🟡"
-                yorum = "Beklentinin üzerinde geldi" if a > f else "Beklentinin altında geldi" if a < f else "Beklentiyle uyumlu geldi"
+                yorum = "Beklentinin uzerinde geldi" if a > f else "Beklentinin altinda geldi" if a < f else "Beklentiyle uyumlu geldi"
             except:
-                emoji = "📊"; yorum = "Veri açıklandı"
-            msg = (f"{emoji} *VERİ SONUCU*\n\n"
-                   f"{flag} *{tr}*\n\n"
-                   f"✅ Gerçekleşen: *{actual}*\n"
+                emoji = "📊"; yorum = "Veri aciklandi"
+            msg = (f"{emoji} *VERI SONUCU*\n\n"
+                   f"*{tr}*\n\n"
+                   f"✅ Gerceklesen: *{actual}*\n"
                    f"📈 Beklenti: {forecast}\n"
-                   f"📊 Önceki: {previous}\n\n"
+                   f"📊 Onceki: {previous}\n\n"
                    f"_{yorum}_\n\n"
-                   f"⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro")
+                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
             await bot.send_message(chat_id=COMMUNITY, text=msg, parse_mode="Markdown")
-            logger.info(f"Sonuç: {tr} = {actual}")
+            logger.info(f"Sonuc: {tr} = {actual}")
 
 # ── SİNYAL PARSER ────────────────────────────────────────
 def parse_signal(text):
@@ -407,7 +401,7 @@ def parse_signal(text):
     except:
         return None
 
-# ── MESAJ HANDLERı ───────────────────────────────────────
+# ── MESAJ HANDLER ────────────────────────────────────────
 async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     msg = update.message
     if not msg or not msg.text: return
@@ -417,42 +411,40 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
     if text.lower().startswith("!sinyal "):
         s = parse_signal(text[8:].strip())
         if not s:
-            await msg.reply_text("⚠️ Format: !sinyal ALTIN AL 2318 TP 2340 SL 2300")
+            await msg.reply_text("Format: !sinyal ALTIN AL 2318 TP 2340 SL 2300")
             return
         await msg.delete()
         full = SYMBOL_MAP.get(s["symbol"], s["symbol"])
         is_long = s["direction"] in ("AL","BUY","LONG")
-        caption = (f"📊 *SİNYAL*\n\n"
-                   f"*{full}*  ·  {'LONG 🟢' if is_long else 'SHORT 🔴'}\n\n"
-                   f"Giriş: `{s['entry']}`  |  Hedef: `{s['tp']}`  |  Stop: `{s['sl']}`\n\n"
-                   f"⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro")
+        caption = (f"📊 *SINYAL*\n\n"
+                   f"*{full}*  -  {'LONG 🟢' if is_long else 'SHORT 🔴'}\n\n"
+                   f"Giris: `{s['entry']}`  |  Hedef: `{s['tp']}`  |  Stop: `{s['sl']}`\n\n"
+                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
         img1 = create_signal_image(s["symbol"],s["direction"],s["entry"],s["tp"],s["sl"])
         img2 = create_signal_image(s["symbol"],s["direction"],s["entry"],s["tp"],s["sl"])
         await bot.send_photo(chat_id=COMMUNITY, photo=img1, caption=caption, parse_mode="Markdown")
         await bot.send_photo(chat_id=VIP,       photo=img2, caption=caption, parse_mode="Markdown")
-        logger.info(f"Sinyal: {text}")
 
     elif text.lower().startswith("!vip "):
         s = parse_signal(text[5:].strip())
         if not s:
-            await msg.reply_text("⚠️ Format: !vip ALTIN AL 2318 TP 2340 SL 2300")
+            await msg.reply_text("Format: !vip ALTIN AL 2318 TP 2340 SL 2300")
             return
         await msg.delete()
         full = SYMBOL_MAP.get(s["symbol"], s["symbol"])
         is_long = s["direction"] in ("AL","BUY","LONG")
-        teaser = (f"👑 *VIP SİNYAL VERİLDİ*\n\n"
-                  f"*{full}*  ·  {'LONG 🟢' if is_long else 'SHORT 🔴'}\n\n"
-                  f"Giriş, hedef ve stop için VIP kanala katıl 👇\n"
+        teaser = (f"👑 *VIP SINYAL VERILDI*\n\n"
+                  f"*{full}*  -  {'LONG 🟢' if is_long else 'SHORT 🔴'}\n\n"
+                  f"Giris, hedef ve stop icin VIP kanala katil 👇\n"
                   f"t.me/+KPo5wu7MwlQ1YzA0\n\n"
-                  f"⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro")
+                  f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
         await bot.send_message(chat_id=COMMUNITY, text=teaser, parse_mode="Markdown")
-        caption = (f"👑 *VIP SİNYAL*\n\n"
-                   f"*{full}*  ·  {'LONG 🟢' if is_long else 'SHORT 🔴'}\n\n"
-                   f"Giriş: `{s['entry']}`  |  Hedef: `{s['tp']}`  |  Stop: `{s['sl']}`\n\n"
-                   f"⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro")
+        caption = (f"👑 *VIP SINYAL*\n\n"
+                   f"*{full}*  -  {'LONG 🟢' if is_long else 'SHORT 🔴'}\n\n"
+                   f"Giris: `{s['entry']}`  |  Hedef: `{s['tp']}`  |  Stop: `{s['sl']}`\n\n"
+                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
         img = create_signal_image(s["symbol"],s["direction"],s["entry"],s["tp"],s["sl"],is_vip=True)
         await bot.send_photo(chat_id=VIP, photo=img, caption=caption, parse_mode="Markdown")
-        logger.info(f"VIP sinyal: {text}")
 
 # ── MAIN ─────────────────────────────────────────────────
 async def main():
@@ -465,7 +457,7 @@ async def main():
     scheduler.add_job(check_upcoming, "interval", minutes=5, args=[bot])
     scheduler.add_job(check_results,  "interval", minutes=2, args=[bot])
     scheduler.start()
-    logger.info("Prism FX Bot başlatıldı!")
+    logger.info("Prism FX Bot basladi!")
 
     async with app:
         await app.start()
