@@ -2,9 +2,11 @@ import os
 import asyncio
 import logging
 from datetime import datetime
+from io import BytesIO
 import pytz
 import aiohttp
 import xml.etree.ElementTree as ET
+from PIL import Image, ImageDraw, ImageFont
 from telegram import Bot
 from apscheduler.schedulers.asyncio import AsyncIOScheduler
 
@@ -14,6 +16,16 @@ logger = logging.getLogger(__name__)
 TOKEN = os.environ.get("BOT_TOKEN")
 CHAT_ID = os.environ.get("CHAT_ID")
 TIMEZONE = pytz.timezone("Europe/Istanbul")
+
+# Renkler
+C_BG       = "#0A1828"
+C_HEADER   = "#042C53"
+C_GOLD     = "#FAC775"
+C_RED      = "#E24B4A"
+C_WHITE    = "#FFFFFF"
+C_MUTED    = "#888888"
+C_CARD     = "#111F30"
+C_BORDER   = "#1E3450"
 
 TRANSLATIONS = {
     "Non-Farm Payrolls": "Tarım Dışı İstihdam",
@@ -96,6 +108,88 @@ def translate(title):
             return tr
     return title
 
+def hex_to_rgb(h):
+    h = h.lstrip("#")
+    return tuple(int(h[i:i+2], 16) for i in (0, 2, 4))
+
+def get_font(size, bold=False):
+    try:
+        if bold:
+            return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf", size)
+        return ImageFont.truetype("/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf", size)
+    except:
+        return ImageFont.load_default()
+
+def create_calendar_image(events, date_str):
+    W = 1080
+    HEADER_H = 140
+    CARD_H = 90
+    PADDING = 48
+    FOOTER_H = 100
+    DIVIDER_H = 2
+    GAP = 12
+
+    n = max(len(events), 1)
+    H = HEADER_H + DIVIDER_H + (CARD_H + GAP) * n + 60 + FOOTER_H
+
+    img = Image.new("RGB", (W, H), hex_to_rgb(C_BG))
+    draw = ImageDraw.Draw(img)
+
+    # Header
+    draw.rectangle([0, 0, W, HEADER_H], fill=hex_to_rgb(C_HEADER))
+    draw.text((PADDING, 28), "PRISM FX · OTOMATİK TAKVİM", font=get_font(20), fill=hex_to_rgb(C_GOLD))
+    draw.text((PADDING, 60), "Günün Ekonomik Takvimi", font=get_font(36, bold=True), fill=hex_to_rgb(C_WHITE))
+    draw.text((PADDING, 108), date_str, font=get_font(22), fill=(*hex_to_rgb(C_WHITE), 100))
+
+    # Header divider
+    draw.rectangle([PADDING, HEADER_H + 8, W - PADDING, HEADER_H + 9], fill=(*hex_to_rgb(C_GOLD), 40))
+
+    y = HEADER_H + 28
+
+    if not events:
+        draw.text((PADDING, y + 30), "Bugün yüksek önemli veri açıklaması bulunmamaktadır.", font=get_font(26), fill=hex_to_rgb(C_MUTED))
+    else:
+        for e in events:
+            # Kart
+            draw.rounded_rectangle([PADDING, y, W - PADDING, y + CARD_H], radius=12, fill=hex_to_rgb(C_CARD), outline=hex_to_rgb(C_BORDER), width=1)
+            # Sol kırmızı şerit
+            draw.rounded_rectangle([PADDING, y, PADDING + 5, y + CARD_H], radius=4, fill=hex_to_rgb(C_RED))
+
+            # Saat
+            draw.text((PADDING + 20, y + 14), e.get("time_local", ""), font=get_font(26, bold=True), fill=hex_to_rgb(C_RED))
+
+            # Başlık
+            flag = COUNTRY_FLAGS.get(e.get("country", ""), "🌐")
+            title = translate(e.get("title", ""))
+            draw.text((PADDING + 130, y + 14), f"{flag} {title}", font=get_font(26, bold=True), fill=hex_to_rgb(C_WHITE))
+
+            # Alt bilgi
+            parts = []
+            if e.get("forecast"):
+                parts.append(f"Beklenti: {e['forecast']}")
+            if e.get("previous"):
+                parts.append(f"Önceki: {e['previous']}")
+            sub = "  ·  ".join(parts) if parts else "Veri bekleniyor"
+            draw.text((PADDING + 130, y + 54), sub, font=get_font(20), fill=hex_to_rgb(C_MUTED))
+
+            y += CARD_H + GAP
+
+    # Disclaimer
+    draw.rectangle([PADDING, y + 10, W - PADDING, y + 11], fill=(*hex_to_rgb(C_WHITE), 15))
+    draw.text((PADDING, y + 22), "🔴 Yüksek Önemli  ·  Yatırım tavsiyesi değildir.", font=get_font(20), fill=hex_to_rgb(C_MUTED))
+
+    # Footer
+    footer_y = H - FOOTER_H
+    draw.rectangle([0, footer_y, W, H], fill=hex_to_rgb(C_HEADER))
+    draw.text((PADDING, footer_y + 22), "PRISM FX", font=get_font(32, bold=True), fill=hex_to_rgb(C_WHITE))
+    draw.text((PADDING, footer_y + 62), "Telegram · Discord · prismfxpro.com", font=get_font(20), fill=(*hex_to_rgb(C_WHITE), 80))
+    draw.text((W - PADDING - 200, footer_y + 38), "@prismfxpro", font=get_font(24), fill=(*hex_to_rgb(C_GOLD), 160))
+
+    buf = BytesIO()
+    img.save(buf, format="PNG", quality=95)
+    buf.seek(0)
+    return buf
+
 async def get_events():
     url = "https://nfs.faireconomy.media/ff_calendar_thisweek.xml"
     try:
@@ -110,12 +204,16 @@ async def get_events():
                         date = event.findtext("date", "")
                         impact = event.findtext("impact", "")
                         if today in date and impact == "High":
+                            time_str = event.findtext("time", "").strip()
+                            event_dt = parse_event_time(time_str)
                             events.append({
-                                "time": event.findtext("time", ""),
+                                "time": time_str,
+                                "time_local": event_dt.strftime("%H:%M") if event_dt else time_str,
                                 "title": event.findtext("title", ""),
                                 "country": event.findtext("country", ""),
                                 "forecast": event.findtext("forecast", ""),
                                 "previous": event.findtext("previous", ""),
+                                "dt": event_dt,
                             })
                     return events
     except Exception as e:
@@ -135,52 +233,37 @@ def parse_event_time(time_str):
 async def send_morning_summary(bot):
     events = await get_events()
     now = datetime.now(TIMEZONE)
-    date_str = now.strftime("%d %B %Y, %A")
+    date_str = now.strftime("%d %B %Y · %A · 08:00")
 
+    img_buf = create_calendar_image(events, date_str)
+
+    caption = "📅 *GÜNÜN EKONOMİK TAKVİMİ*\n"
     if not events:
-        msg = (
-            "📅 *GÜNÜN EKONOMİK TAKVİMİ*\n"
-            f"_{date_str}_\n\n"
-            "Bugün yüksek önemli veri açıklaması bulunmamaktadır.\n\n"
-            "⚠️ _Yatırım tavsiyesi değildir._\n"
-            "📊 @prismfxpro"
-        )
+        caption += "\nBugün yüksek önemli veri açıklaması bulunmamaktadır."
     else:
-        lines = []
         for e in events:
             flag = COUNTRY_FLAGS.get(e["country"], "🌐")
             tr_title = translate(e["title"])
-            event_dt = parse_event_time(e["time"])
-            t = event_dt.strftime("%H:%M") if event_dt else e["time"]
-            forecast = f" | Beklenti: {e['forecast']}" if e.get("forecast") else ""
-            previous = f" | Önceki: {e['previous']}" if e.get("previous") else ""
-            lines.append(f"🔴 `{t}` {flag} *{tr_title}*{forecast}{previous}")
+            caption += f"\n🔴 `{e['time_local']}` {flag} *{tr_title}*"
 
-        msg = (
-            "📅 *GÜNÜN EKONOMİK TAKVİMİ*\n"
-            f"_{date_str}_\n\n"
-            + "\n\n".join(lines) +
-            "\n\n🔴 Yüksek Önemli Veriler\n"
-            "⚠️ _Yatırım tavsiyesi değildir._\n"
-            "📊 @prismfxpro"
-        )
+    caption += "\n\n⚠️ _Yatırım tavsiyesi değildir._\n📊 @prismfxpro"
 
-    await bot.send_message(chat_id=CHAT_ID, text=msg, parse_mode="Markdown")
-    logger.info("Sabah özeti gönderildi.")
+    await bot.send_photo(chat_id=CHAT_ID, photo=img_buf, caption=caption, parse_mode="Markdown")
+    logger.info("Sabah görsel özeti gönderildi.")
 
 async def check_upcoming(bot):
     events = await get_events()
     now = datetime.now(TIMEZONE)
 
     for e in events:
-        event_dt = parse_event_time(e["time"])
+        event_dt = e.get("dt")
         if not event_dt:
             continue
         diff = (event_dt - now).total_seconds() / 60
         if 14 <= diff <= 16:
             flag = COUNTRY_FLAGS.get(e["country"], "🌐")
             tr_title = translate(e["title"])
-            t = event_dt.strftime("%H:%M")
+            t = e["time_local"]
             forecast = f"\n📈 Beklenti: *{e['forecast']}*" if e.get("forecast") else ""
             previous = f"\n📊 Önceki: {e['previous']}" if e.get("previous") else ""
 
