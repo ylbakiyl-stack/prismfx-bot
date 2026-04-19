@@ -140,7 +140,7 @@ async def send_morning_summary(bot):
             pv = f" | Onceki: {e['previous']}" if e.get("previous") else ""
             msg += f"🔴 `{e['time_local']}` {flag} *{tr}*{fc}{pv}\n\n"
 
-    msg += "⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro"
+    msg += "⚠️ _Yatirim tavsiyesi degildir._"
     await bot.send_message(chat_id=COMMUNITY, text=msg, parse_mode="Markdown")
     logger.info("Sabah takvimi gonderildi.")
 
@@ -160,7 +160,7 @@ async def check_upcoming(bot):
                    f"🔴 {flag} *{tr}*\n"
                    f"🕐 Saat: `{e['time_local']}`{fc}{pv}\n\n"
                    f"_Piyasalarda volatilite artabilir. Risk yonetimine dikkat!_\n\n"
-                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
+                   f"⚠️ _Yatirim tavsiyesi degildir._")
             await bot.send_message(chat_id=COMMUNITY, text=msg, parse_mode="Markdown")
             logger.info(f"15dk uyari: {tr}")
 
@@ -190,7 +190,7 @@ async def check_results(bot):
                    f"📈 Beklenti: {forecast}\n"
                    f"📊 Onceki: {previous}\n\n"
                    f"_{yorum}_\n\n"
-                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
+                   f"⚠️ _Yatirim tavsiyesi degildir._")
             await bot.send_message(chat_id=COMMUNITY, text=msg, parse_mode="Markdown")
             logger.info(f"Sonuc: {tr} = {actual}")
 
@@ -238,7 +238,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                    f"✅ Hedef: `{s['tp']}`\n"
                    f"❌ Stop: `{s['sl']}`"
                    f"{rr_line}\n\n"
-                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
+                   f"⚠️ _Yatirim tavsiyesi degildir._")
         await bot.send_message(chat_id=COMMUNITY, text=caption, parse_mode="Markdown")
         await bot.send_message(chat_id=VIP, text=caption, parse_mode="Markdown")
 
@@ -254,9 +254,8 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
         teaser = (f"👑 *VIP SINYAL VERILDI*\n\n"
                   f"*{full}* — {dir_text}\n\n"
-                  f"Tam detaylar icin VIP kanala katil 👇\n"
-                  f"t.me/+KPo5wu7MwlQ1YzA0\n\n"
-                  f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
+                  f"Tam detaylar icin VIP kanala katil 👇\n\n"
+                  f"⚠️ _Yatirim tavsiyesi degildir._")
         await bot.send_message(chat_id=COMMUNITY, text=teaser, parse_mode="Markdown")
 
         try:
@@ -275,7 +274,7 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
                    f"✅ Hedef: `{s['tp']}`\n"
                    f"❌ Stop: `{s['sl']}`"
                    f"{rr_line}\n\n"
-                   f"⚠️ _Yatirim tavsiyesi degildir._\n📊 @prismfxpro")
+                   f"⚠️ _Yatirim tavsiyesi degildir._")
         await bot.send_message(chat_id=VIP, text=vip_msg, parse_mode="Markdown")
 
 async def main():
